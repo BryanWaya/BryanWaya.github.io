@@ -3,129 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waya Bryan | Data & Bioengineering</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Waya Iruoghene Bryan | Data & Bioengineering Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f172a; --card: #1e293b; --accent: #38bdf8;
-            --text-main: #f1f5f9; --text-dim: #94a3b8;
+            --bg: #0a0a0c; --card: #16161a; --accent: #00d1ff;
+            --text-main: #ffffff; --text-dim: #94a3b8; --border: #2d2d35;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
 
         /* Navigation */
-        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #334155; }
-        .logo { font-weight: 700; color: var(--accent); font-size: 1.2rem; }
-        nav a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: 0.3s; }
+        nav { padding: 1.5rem 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); }
+        nav a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        /* Hero */
-        header { padding: 4rem 10% 2rem; text-align: left; max-width: 1000px; }
-        header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
-        header p { color: var(--accent); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        header span { color: var(--text-dim); display: block; margin-top: 1rem; font-size: 1.1rem; }
-
-        /* Bento Grid */
-        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 2rem 10%; }
-        .card { background: var(--card); border: 1px solid #334155; border-radius: 1.5rem; padding: 2rem; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .col-2 { grid-column: span 2; }
-        .col-3 { grid-column: span 3; }
-
-        /* Labels & Lists */
-        h3 { margin-bottom: 1.5rem; font-size: 1.3rem; color: var(--accent); }
-        .tag { background: #334155; padding: 0.3rem 0.8rem; border-radius: 0.5rem; font-size: 0.8rem; margin: 0.2rem; display: inline-block; }
-        .exp-item { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem; position: relative; }
-        .exp-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+        /* Hero Section */
+        .hero { padding: 10rem 8% 5rem; display: flex; align-items: center; gap: 4rem; max-width: 1400px; margin: 0 auto; }
+        .hero-text { flex: 2; }
+        .hero-img { flex: 1; text-align: center; }
+        .profile-pic { width: 300px; height: 300px; border-radius: 2rem; object-fit: cover; border: 2px solid var(--accent); box-shadow: 0 20px 50px rgba(0, 209, 255, 0.2); }
         
-        @media (max-width: 900px) { .bento-grid { grid-template-columns: 1fr; } .col-2, .col-3 { grid-column: span 1; } }
+        .hero h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .vision-statement { background: var(--card); border: 1px solid var(--border); padding: 2rem; border-radius: 1.5rem; margin-top: 2rem; }
+        .vision-statement h3 { color: var(--accent); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .vision-statement p { font-style: italic; color: var(--text-dim); font-size: 1.1rem; }
+
+        /* Content Grid */
+        .section { padding: 5rem 8%; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 3rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 1.5rem; overflow: hidden; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .card-content { padding: 2rem; }
+        .card-img { width: 100%; height: 220px; object-fit: cover; background: #25252b; border-bottom: 1px solid var(--border); }
+        
+        /* Certifications List */
+        .cert-list { list-style: none; }
+        .cert-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid var(--border); }
+        .cert-item:last-child { border: none; }
+        .btn-pdf { color: var(--accent); text-decoration: none; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.5rem 1rem; border-radius: 0.5rem; transition: 0.3s; }
+        .btn-pdf:hover { background: var(--accent); color: var(--bg); }
+
+        /* Contact Footer */
+        footer { background: var(--card); padding: 5rem 8%; border-top: 1px solid var(--border); text-align: center; }
+        .contact-info { margin-top: 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .contact-item span { display: block; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; }
+        .contact-item a { color: var(--text-main); font-weight: 600; text-decoration: none; }
+
+        @media (max-width: 1000px) { .hero { flex-direction: column-reverse; text-align: center; } .hero h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">W. Bryan</div>
+        <div class="logo">W. BRYAN</div>
         <div>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Work</a>
-            <a href="#education">Education</a>
+            <a href="#projects">Portfolio</a>
+            <a href="#certs">Certifications</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <header>
-        <p>Data Analyst • Bioengineering Researcher</p>
-        <h1>Bridging analytical intelligence with bioengineering.</h1>
-        <span>M.Sc. Candidate at ITMO University specializing in Chemoinformatics and genomic data processing.</span>
+    <header class="hero">
+        <div class="hero-text">
+            <p style="color:var(--accent); font-weight: 700; letter-spacing: 2px;">DATA ANALYST & ENGINEER</p>
+            <h1>WAYA IRUOGHENE BRYAN</h1>
+            <div class="vision-statement">
+                <h3>Vision Statement</h3>
+                <p>"To excel within a high-impact research environment that fosters professional growth, while utilising advanced analytical and engineering methodologies to solve complex biological and technical challenges." [cite: 3]</p>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="Me.jpg" alt="Waya Iruoghene Bryan" class="profile-pic">
+        </div>
     </header>
 
-    <div class="bento-grid">
-        <div class="card col-2">
-            <h3>Technical DNA</h3>
-            <canvas id="skillsChart" height="150"></canvas>
-        </div>
+    <section class="section" id="projects">
+        <h2 class="section-title">Key Projects & Publications</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="dna-gui.png" alt="DNA Software GUI" class="card-img"> <div class="card-content">
+                    <h3 style="color:var(--accent)">DNA Sequencing Software</h3>
+                    <p style="font-size: 0.9rem; margin: 1rem 0;">A specialized model developed for smoothing and classifying DNA data generated by first-generation Sanger sequencers. [cite: 36, 38]</p>
+                </div>
+            </div>
 
+            <div class="card">
+                <img src="Headset.jpg" alt="Smart Headset" class="card-img"> <div class="card-content">
+                    <h3 style="color:var(--accent)">Smart Headset (NDA Protected)</h3>
+                    <p style="font-size: 0.9rem; margin: 1rem 0;">Physical implementation and hardware-software integration of a proprietary wearable audio device. [cite: 39, 40]</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <p style="color:var(--text-dim); font-size: 0.8rem;">PUBLISHED IN ENERGIES (2023)</p>
+                    <h3 style="margin: 0.5rem 0;">Renewable Energy Forecasting</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Co-authored research on using climatic-weather-forecasting machine learning algorithms for energy potential estimation. [cite: 56, 57]</p>
+                    <a href="https://www.mdpi.com/1996-1073/16/4/1603" target="_blank" class="btn-pdf">VIEW FULL PUBLICATION</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="certs" style="background: rgba(255,255,255,0.02);">
+        <h2 class="section-title">Professional Certifications</h2>
         <div class="card">
-            <h3>Core Tools</h3>
-            <div class="tag">Python</div> <div class="tag">SQL</div> 
-            <div class="tag">Power BI</div> <div class="tag">C++</div>
-            <div class="tag">MATLAB</div> <div class="tag">Java</div>
-            <div class="tag">Selenium</div> <div class="tag">Postman</div>
+            <ul class="cert-list">
+                <li class="cert-item">
+                    <div><strong>IoT with Arduino & ESP8266</strong> <p style="font-size: 0.8rem; color:var(--text-dim)">Udemy</p></div>
+                    <a href="iot-cert.pdf" class="btn-pdf">VIEW PDF</a> </li>
+                <li class="cert-item">
+                    <div><strong>Python Basics & Data Structures</strong> <p style="font-size: 0.8rem; color:var(--text-dim)">Coursera</p></div>
+                    <a href="python-cert.pdf" class="btn-pdf">VIEW PDF</a> </li>
+                <li class="cert-item">
+                    <div><strong>Complete Quality Assurance (QA)</strong> <p style="font-size: 0.8rem; color:var(--text-dim)">Udemy</p></div>
+                    <a href="qa-cert.pdf" class="btn-pdf">VIEW PDF</a> </li>
+            </ul>
         </div>
+    </section>
 
-        <div class="card col-2">
-            <h3>Key Publication</h3>
-            <p style="color:var(--text-dim)">Energies Journal (2023)</p>
-            <h4 style="margin: 1rem 0">Renewable Energy Potential Estimation</h4>
-            <p style="font-size: 0.9rem">Applied climatic-weather-forecasting machine learning algorithms to model and estimate energy potential across environmental datasets.</p>
-        </div>
-
-        <div class="card">
-            <h3>Research Focus</h3>
-            <p style="font-size: 0.9rem">Processing and smoothing DNA sequence data generated by first-generation Sanger sequencers for enhanced bio-analysis[cite: 8].</p>
-        </div>
-
-        <div class="card col-3">
-            <h3>Professional Journey</h3>
-            <div class="exp-item">
-                <strong>Graduate Research Intern</strong> | Russian Academy of Sciences
-                <p style="font-size: 0.8rem; color: var(--text-dim)">2025 – Present</p>
-                <p>Analyzing complex research data using Python to support computational chemistry and bioengineering projects[cite: 14, 15, 17].</p>
+    <footer id="contact">
+        <h2>Connect with Waya</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>Direct Email</span>
+                <a href="mailto:wayabryan@gmail.com">wayabryan@gmail.com</a> [cite: 1]
             </div>
-            <div class="exp-item">
-                <strong>QA Team Lead</strong> | Platforms Innovations Ltd
-                <p style="font-size: 0.8rem; color: var(--text-dim)">2023 – 2024</p>
-                <p>Led QA team in executing automated testing protocols using Apache JMeter and Selenium on SaaS platforms[cite: 31, 33, 34].</p>
+            <div class="contact-item">
+                <span>Phone (RU/NG)</span>
+                <a href="tel:+2348138251413">+2348138251413</a> [cite: 1]
             </div>
-            <div class="exp-item">
-                <strong>Hardware/IoT Engineer</strong> | Platforms Innovations Ltd
-                <p style="font-size: 0.8rem; color: var(--text-dim)">2021 – 2024</p>
-                <p>Engineered IoT systems and PCB layouts using Proteus and KiCad, integrating real-time sensor data for aquaculture[cite: 24, 26, 41, 44].</p>
+            <div class="contact-item">
+                <span>Professional Network</span>
+                <a href="https://www.linkedin.com/in/iruoghene-bryan-waya" target="_blank">LinkedIn Profile</a> [cite: 1]
             </div>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        const ctx = document.getElementById('skillsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Python', 'SQL', 'ML Modeling', 'Data Viz', 'C++', 'IoT Systems'],
-                datasets: [{
-                    label: 'Proficiency',
-                    data: [95, 80, 85, 88, 82, 90],
-                    backgroundColor: '#38bdf8',
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
-                    x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
