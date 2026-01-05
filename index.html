@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waya Bryan | Data Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --navy: #0a192f; --light-blue: #64ffda; --slate: #8892b0; --white: #e6f1ff; }
+        body { background-color: var(--navy); color: var(--slate); font-family: sans-serif; margin: 0; }
+        nav { background: rgba(10, 25, 47, 0.9); padding: 20px; position: fixed; width: 100%; top: 0; display: flex; justify-content: space-around; z-index: 100; }
+        nav a { color: var(--light-blue); text-decoration: none; font-weight: bold; }
+        .container { padding: 100px 10% 50px; }
+        h1, h2 { color: var(--white); }
+        .hero { text-align: center; padding: 50px 0; }
+        .hero h1 { font-size: 3rem; margin-bottom: 0; }
+        .hero p { color: var(--light-blue); font-size: 1.2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: #112240; padding: 20px; border-radius: 10px; border-left: 4px solid var(--light-blue); }
+        .chart-container { background: #112240; padding: 20px; border-radius: 10px; margin-top: 30px; }
+        canvas { max-width: 100%; height: auto !important; }
+        .project-img { width: 100%; height: 150px; background: #233554; border-radius: 5px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: var(--light-blue); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#charts">Analytics</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <h1>WAYA IRUOGHENE BRYAN</h1>
+            <p>Data Analyst | Bioengineering M.Sc. Candidate at ITMO University</p>
+        </section>
+
+        <section id="charts">
+            <h2>Data Insights & Skills</h2>
+            <div class="grid">
+                <div class="chart-container">
+                    <h3 style="color:var(--white); text-align:center;">Technical Skill Radar</h3>
+                    <canvas id="skillsChart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Publication Highlight</h3>
+                    <p><strong>Renewable Energy Potential Estimation</strong> [cite: 56]</p>
+                    <p>Utilized climatic-weather-forecasting machine learning algorithms to analyze environmental data[cite: 57].</p>
+                    <div class="project-img">ML Algorithm Visualization</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Data Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="project-img">DNA Data Model</div>
+                    <h3>DNA Sequence Classification</h3>
+                    <p>Developing Python models for smoothing and classifying DNA sequence data from Sanger sequencers[cite: 8, 36, 38].</p>
+                </div>
+                <div class="card">
+                    <div class="project-img">IoT Sensor Stream</div>
+                    <h3>IoT Aquaculture Monitoring</h3>
+                    <p>Built a network of sensors for real-time monitoring of water quality parameters like pH and temperature[cite: 41, 44].</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="card">
+                <h4>Graduate Research Intern</h4>
+                <p><em>Russian Academy of Sciences | 2025–Present</em></p>
+                <ul>
+                    <li>Analyzing complex research data using Python for bioengineering projects[cite: 15, 17].</li>
+                </ul>
+            </div>
+            <br>
+            <div class="card">
+                <h4>Quality Assurance Team Lead</h4>
+                <p><em>Platforms Innovations Ltd | 2023–2024</em></p>
+                <ul>
+                    <li>Led data-driven performance validation using Selenium and Postman[cite: 31, 33, 34].</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Skills Radar Chart
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Python', 'SQL', 'Machine Learning', 'C++', 'Power BI', 'Data Modeling'],
+                datasets: [{
+                    label: 'Proficiency Level',
+                    data: [90, 75, 80, 85, 70, 85],
+                    backgroundColor: 'rgba(100, 255, 218, 0.2)',
+                    borderColor: '#64ffda',
+                    pointBackgroundColor: '#64ffda'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { color: '#8892b0' },
+                        grid: { color: '#8892b0' },
+                        pointLabels: { color: '#e6f1ff' },
+                        ticks: { display: false }
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+</body>
+</html>
